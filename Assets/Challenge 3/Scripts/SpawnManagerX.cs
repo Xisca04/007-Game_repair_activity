@@ -10,6 +10,8 @@ public class SpawnManagerX : MonoBehaviour
 
     private PlayerControllerX playerControllerScript;
 
+    public ParticleSystem dirtParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,13 @@ public class SpawnManagerX : MonoBehaviour
         {
             Instantiate(objectPrefabs[index], spawnLocation, objectPrefabs[index].transform.rotation);
         }
+    }
 
+    private void OnCollisionEnter(Collision otherCollider)
+    {
+        if(otherCollider.gameObject.CompareTag("Bomb"))
+        {
+            dirtParticle.Play();
+        }
     }
 }

@@ -64,6 +64,14 @@ public class PlayerControllerX : MonoBehaviour
 
         }
 
+        // if player touch the groun = GAME OVER
+
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            gameOver = true;
+            Debug.Log("Game Over!");
+        }
+
     }
 
 }

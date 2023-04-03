@@ -8,7 +8,7 @@ public class PlayerControllerX : MonoBehaviour
 
     public float floatForce;
     private float gravityModifier = 1.5f;
-    private Rigidbody playerRb;
+    public Rigidbody playerRb;
 
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
@@ -18,6 +18,8 @@ public class PlayerControllerX : MonoBehaviour
     public AudioClip explodeSound;
 
     public int Counter;
+
+    private float upperLimit = 16.6f;
 
 
 
@@ -39,6 +41,11 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
         {
             playerRb.AddForce(Vector3.up * floatForce, ForceMode.Impulse);
+        }
+
+        if (transform.position.y == upperLimit)
+        {
+            playerRb.velocity = Vector3.zero;
         }
     }
 
